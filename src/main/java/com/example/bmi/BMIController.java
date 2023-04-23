@@ -41,7 +41,7 @@ public class BMIController {
     private TextField weightTextField;
     String unit;
     String status;
-    double bmi;
+    double result;
     @FXML
     void calculateButtonPressed(ActionEvent event) {
         try{
@@ -49,19 +49,19 @@ public class BMIController {
             double height = Double.parseDouble(heightTextField.getText());
 
             if(unit == "Metric"){
-                bmi = weight / Math.pow(height, 2);
+                result = weight / Math.pow(height, 2);
             }
             else{
-                bmi = 703 * (weight / Math.pow(height, 2));
+                result = 703 * (weight / Math.pow(height, 2));
             }
 
-            if(bmi < 18.5){
+            if(result < 18.5){
                 status = "Underweight";
                 statusTextField.setText(status);
-            } else if (18.5 <= bmi && bmi <= 24.9) {
+            } else if (18.5 <= result && result <= 24.9) {
                 status = "Normal";
                 statusTextField.setText(status);
-            } else if (25 <= bmi && bmi <= 29.9) {
+            } else if (25 <= result && result <= 29.9) {
                 status = "Overweight";
                 statusTextField.setText(status);
             } else{
@@ -69,7 +69,7 @@ public class BMIController {
                 statusTextField.setText(status);
             }
 
-            bmiTextField.setText(String.valueOf(bmi));
+            bmiTextField.setText(String.valueOf(result));
         }
 
         catch (Exception ex){
